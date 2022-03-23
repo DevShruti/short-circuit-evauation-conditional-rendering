@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+// short-circuit evaluation
+// ternary operator
 
-function App() {
+const ShortCircuit = () => {
+  const [text, setText] = useState('');
+  const [isError, setIsError] = useState(false);
+  // const firstValue = text || 'hello world';
+  // const secondValue = text && 'hello world';
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* <h1>{firstValue}</h1>
+      <h1>value : {secondValue}</h1> */}
+      {/* {if(){console.log('hello world')}} */}
+      <h1>{text || 'john doe'}</h1>
+      <button className='btn' onClick={() => setIsError(!isError)}>
+        toggle error
+      </button>
+      {isError && <h1>Error...</h1>}
+      {isError ? (
+        <p>there is an error...</p>
+      ) : (
+        <div>
+          <h2>there is no error</h2>
+        </div>
+      )}
+    </>
   );
-}
+};
 
-export default App;
+export default ShortCircuit;
